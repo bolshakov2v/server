@@ -1,0 +1,4 @@
+﻿  main.cpp
+c:\users\bolsh\owncloud\documents\visual studio 2015\projects\server\server\main.cpp(1): warning C4068: неизвестная директива pragma
+  server.vcxproj -> C:\Users\bolsh\ownCloud\Documents\visual studio 2015\Projects\server\Debug\server.exe
+  server.vcxproj -> C:\Users\bolsh\ownCloud\Documents\visual studio 2015\Projects\server\Debug\server.pdb (Full PDB)
