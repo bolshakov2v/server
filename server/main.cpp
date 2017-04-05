@@ -27,8 +27,12 @@ void SendMessageToClient(int ID)
 }
 int main()
 {
+	string s = "";
 	printf("Welcome to the chat server, Please enter the license key\n");
-	
+	getline(cin, s);
+	cout << s+"\n";
+	if (s == "hhh") cout << "yyy\n";
+	else cout << "no\n";
 	
 	setlocale(LC_ALL, "russian");
 	WSAData Wsadata;
@@ -76,13 +80,12 @@ int main()
 	{
 		if (Connect = accept(ListenSocket, NULL, NULL))
 		{
-			printf("Client connect...\n");
+			printf("Client connecting...\n");
 			char b[1024];
-			//printf("%d\n", recv(Connect, b, strlen(b), 0));
-			Connections[ClientCount] = Connect;
-			send(Connections[ClientCount], m_connect, strlen(m_connect), NULL);
-			recv(Connections[ClientCount], b, 1024, 0);
-			printf("%s", b);
+			send(Connect, m_connect, strlen(m_connect), NULL);
+			recv(Connect, b, 1024, 0);
+			printf("%s\n", b);//выводим пароль
+
 			int f1 = 0, f2 = 0, f3 = 0;
 			for (int i = 0; i < 1024; i++) {
 				if (b[i] == 'N') f1 = 1;
@@ -90,29 +93,17 @@ int main()
 				if (b[i] == 'z') f3 = 1;
 			}
 			int sum = f1 + f2 + f3;
-
-			//int s = atoi(b);
 			printf("%d\n", sum);
-			//send(Connections[ClientCount], b, 1024, 0);
-			//char key[] = "123456";
-			//int ss = atoi(key);
-			if (sum == 3) { 
+			if (sum == 3) {
 				printf("yes\n");
-				send(Connections[ClientCount], "key correct", 12, NULL);
+				send(Connect, "key correct", 12, NULL);
+				Connections[ClientCount] = Connect;
 			}
-			else { 
+			else {
 				printf("no\n");
-				send(Connections[ClientCount], "wrong  key ", 12, NULL);
-			
+				send(Connect, "wrong  key ", 12, NULL);
 			}
-			/*for (int i = 0; i < strlen(b); i++)
-			{
-				printf("%c    %c\n", b[i], key[i]);
-				if (b[i] == key[i]) printf("yes\n");
-				else printf("no\n");
-			}*/
-			//send(Connections[ClientCount], "hello\n", 5, NULL);
-			//printf("%s", recv(Connections[ClientCount], b, strlen(b), 0));
+
 			ClientCount++;
 			CreateThread(NULL, NULL, (LPTHREAD_START_ROUTINE)SendMessageToClient, (PVOID)(ClientCount - 1), NULL, NULL);
 		}
