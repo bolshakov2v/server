@@ -1,0 +1,7 @@
+﻿  main.cpp
+main.cpp(23): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+main.cpp(73): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+main.cpp(95): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+main.cpp(130): warning C4312: приведение типов: преобразование из "int" в "PVOID" большего размера
+  server.vcxproj -> C:\Users\bolsh\Desktop\чат 28.05.17 мой\server\x64\Release\server.exe
+  server.vcxproj -> C:\Users\bolsh\Desktop\чат 28.05.17 мой\server\x64\Release\server.pdb (Full PDB)
